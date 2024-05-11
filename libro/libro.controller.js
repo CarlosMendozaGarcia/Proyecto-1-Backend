@@ -1,43 +1,43 @@
-const { throwCustomError } = require("../utils/functions");
-const { createLibroMongo, getLibroMongo, updateLibroMongo, deleteLibroMongo } = require("./libro.actions");
+const { throwCustomError } = require("../Authentication/Authentication")
+const { createLibroMongo, getLibroMongo, updateLibroMongo, deleteLibroMongo } = require("./libro.actions")
 
 async function readLibroConFiltros(query) {
-    const { genero, fechapubli, editorial, autor, titulo } = query;
+    const { genero, fechapubli, editorial, autor, titulo } = query
 
     // hacer llamado a base de datos con el filtro de tipo
-    const resultadosBusqueda = await getLibroMongo(query);
+    const resultadosBusqueda = await getLibroMongo(query)
 
-    return resultadosBusqueda;
+    return resultadosBusqueda
 }
 
 async function createLibro(datos) {
-    const { titulo, autor, editorial, precio, genero, fechapubli, borrado } = datos;
+    const { titulo, autor, editorial, precio, genero, fechapubli, borrado } = datos
 
 
-    const LibroSimilar = await getLibroMongo({titulo});
+    const LibroSimilar = await getLibroMongo({titulo})
 
     // hacer llamado a base de datos con el filtro de tipo
-    const LibroCreado = await createLibroMongo(datos);
+    const LibroCreado = await createLibroMongo(datos)
 
-    return LibroCreado;
+    return LibroCreado
 }
 
 
 function updateLibro(datos) {
-    const { _id, ...cambios } = datos;
+    const { _id, ...cambios } = datos
 
     // hacer llamado a base de datos con el filtro de tipo
-    const LibroCreado = updateLibroMongo(_id, cambios);
+    const LibroCreado = updateLibroMongo(_id, cambios)
 
-    return LibroCreado;
+    return LibroCreado
 }
 
 function deleteLibro(id) {
 
     // hacer llamado a base de datos con el filtro de tipo
-    const LibroCreado = deleteLibroMongo(id);
+    const LibroCreado = deleteLibroMongo(id)
 
-    return LibroCreado;
+    return LibroCreado
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const schemaLibro = new mongoose.Schema({
     titulo:{type:String, required:true},
@@ -6,13 +6,13 @@ const schemaLibro = new mongoose.Schema({
     editorial:{type:String, required:true},
     precio:{type:Number,required:true},
     genero:{type:String},
-    fechapubli: {type:String,required:true},
-    borrado:{type:Boolean,required:true}
+    fecha_publicacion: {type:String,required:true},
+    borrado:{type:Boolean,default:false}
   }, {
     versionKey: false,
     timestamps: true
-});
+})
   
-const Model = mongoose.model('Libro', schemaLibro);
+const Model = mongoose.model('Libro', schemaLibro)
 
-module.exports = Model;
+module.exports = Model

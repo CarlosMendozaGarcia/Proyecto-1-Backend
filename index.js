@@ -1,19 +1,35 @@
 const express = require ('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const url = process.env.DB_URL
 const app = express()
 
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(express.json())
 
 app.get("/", (req,res) =>{
-    res.status(200).json({});
+    res.status(200).json({})
 })
 
 const rutaslibro = require("./libro/libro.route")
-app.use('/libro', rutaslibro);
 
-mongoose.connect("mongodb+srv://mendozagarcia:WH2m5kTSKdzoFMl6@clusterbackend.jqy3wbh.mongodb.net/"
-).then(() => console.log("Database connection succesful")).catch(() => console.log("Database connection error"));
+const rutaspedido = require("./pedido/pedido.route")
 
-app.listen(8080)
+//const rutasusuario = require("./usuario/usuario.route")
+
+
+app.use('/libro', rutaslibro)
+
+app.use('/pedido', rutaspedido)
+
+//app.use('/usuario', rutasusuario)
+
+mongoose.connect(url).then(() => {
+    console.log("Database connection succesful")
+    app.listen(8080)
+}
+).catch(() => {
+    console.log("Database connection error")
+}
+)
+
