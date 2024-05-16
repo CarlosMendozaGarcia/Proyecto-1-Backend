@@ -1,25 +1,30 @@
 const Pedido = require("./pedido.model")
 
 async function getPedidoMongo(filtros) {
-    const cantidadPedidos = await Pedido.countDocuments(filtros);
-    const PedidosFiltrados = await Pedido.find(filtros);
+    const cantidadPedidos = await Pedido.countDocuments(filtros)
+    const PedidosFiltrados = await Pedido.find(filtros)
 
     return {
         resultados: PedidosFiltrados,
         // paginaMax: cantidadPedidos / 20,
         // paginaActual: 1,
         cantidadPedidos: cantidadPedidos
-    };
+    }
+}
+
+async function getPedidoByID(id){
+    const Pedido = await Pedido.findById(id)
+    return Pedido
 }
 
 async function createPedidoMongo(datos) {
-    const PedidoCreado = await Pedido.create(datos);
+    const PedidoCreado = await Pedido.create(datos)
 
-    return PedidoCreado;
+    return PedidoCreado
 }
 
 async function updatePedidoMongo(id, cambios) {
-    const resultado = await Pedido.findByIdAndUpdate(id, cambios);
+    const resultado = await Pedido.findByIdAndUpdate(id, cambios)
 
     return resultado
 }
@@ -27,7 +32,7 @@ async function updatePedidoMongo(id, cambios) {
 async function deletePedidoMongo(id) {
     const resultado = await Pedido.findByIdAndUpdate(id, {borrado: true})
     
-    return resultado;
+    return resultado
 }
 
 module.exports = {
@@ -35,4 +40,4 @@ module.exports = {
     getPedidoMongo,
     updatePedidoMongo,
     deletePedidoMongo
-};
+}

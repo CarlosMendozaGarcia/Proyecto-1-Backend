@@ -1,25 +1,25 @@
-const { throwCustomError } = require("../Authentication/Authentication");
-const { createPedidoMongo, getPedidoMongo, updatePedidoMongo, deletePedidoMongo } = require("./pedido.actions");
+const { throwCustomError } = require("../Authentication/Authentication")
+const { createPedidoMongo, getPedidoMongo, updatePedidoMongo, deletePedidoMongo } = require("./pedido.actions")
 
 async function readPedidoConFiltros(query) {
-    const {fecha_min, fecha_max, estado} = query;
+    const {fecha_min, fecha_max, estado} = query
 
     // hacer llamado a base de datos con el filtro de tipo
-    const resultadosBusqueda = await getPedidoMongo(query);
+    const resultadosBusqueda = await getPedidoMongo(query)
 
-    return resultadosBusqueda;
+    return resultadosBusqueda
 }
 
 async function createPedido(datos) {
-    const { comprador, vendedor, estado, fecha, borrado, ...items} = datos;
+    const { comprador, vendedor, estado, fecha, borrado, ...items} = datos
 
 
-    const PedidoSimilar = await getPedidoMongo({titulo});
+    const PedidoSimilar = await getPedidoMongo({titulo})
 
     // hacer llamado a base de datos con el filtro de tipo
-    const PedidoCreado = await createPedidoMongo(datos);
+    const PedidoCreado = await createPedidoMongo(datos)
 
-    return PedidoCreado;
+    return PedidoCreado
 }
 
 
@@ -27,9 +27,9 @@ function updatePedido(datos) {
     const { _id, ...cambios } = datos;
 
     // hacer llamado a base de datos con el filtro de tipo
-    const PedidoCreado = updatePedidoMongo(_id, cambios);
+    const PedidoCreado = updatePedidoMongo(_id, cambios)
 
-    return PedidoCreado;
+    return PedidoCreado
 }
 
 function deletePedido(id) {
@@ -37,7 +37,7 @@ function deletePedido(id) {
     // hacer llamado a base de datos con el filtro de tipo
     const PedidoCreado = deletePedidoMongo(id);
 
-    return PedidoCreado;
+    return PedidoCreado
 }
 
 module.exports = {

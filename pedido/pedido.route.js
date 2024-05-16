@@ -47,7 +47,7 @@ async function PatchPedidos(req, res) {
 async function DeletePedidos(req, res) {
     try {
         // llamada a controlador con los datos
-        deletePedido(req.params.id);
+        deletePedido(req.params.id)
 
         res.status(200).json({
             mensaje: "Exito. 👍"
@@ -57,10 +57,10 @@ async function DeletePedidos(req, res) {
     }
 }
 
-router.get("/", GetPedidos);
-router.post("/", PostPedido);
-router.patch("/", PatchPedidos);
-router.delete("/:id", DeletePedidos);
+router.get("/", GetPedidos)
+router.post("/", PostPedido)
+router.patch("/", PatchPedidos)
+router.delete("/:id", DeletePedidos)
 
 
-module.exports = router;
+module.exports = router

@@ -1,43 +1,43 @@
-const { throwCustomError } = require("../utils/functions");
-const { createUsuarioMongo, getUsuarioMongo, updateUsuarioMongo, deleteUsuarioMongo } = require("./usuario.actions");
+const { throwCustomError } = require("../utils/functions")
+const { createUsuarioMongo, getUsuarioMongo, updateUsuarioMongo, deleteUsuarioMongo } = require("./usuario.actions")
 
 async function readUsuarioConFiltros(query) {
-    const {fecha_min, fecha_max, estado} = query;
+    const {fecha_min, fecha_max, estado} = query
 
     // hacer llamado a base de datos con el filtro de tipo
-    const resultadosBusqueda = await getUsuarioMongo(query);
+    const resultadosBusqueda = await getUsuarioMongo(query)
 
-    return resultadosBusqueda;
+    return resultadosBusqueda
 }
 
 async function createUsuario(datos) {
-    const { comprador, vendedor, estado, fecha, borrado, ...items} = datos;
+    const { comprador, vendedor, estado, fecha, borrado, ...items} = datos
 
 
-    const UsuarioSimilar = await getUsuarioMongo({titulo});
+    const UsuarioSimilar = await getUsuarioMongo({titulo})
 
     // hacer llamado a base de datos con el filtro de tipo
-    const UsuarioCreado = await createUsuarioMongo(datos);
+    const UsuarioCreado = await createUsuarioMongo(datos)
 
-    return UsuarioCreado;
+    return UsuarioCreado
 }
 
 
 function updateUsuario(datos) {
-    const { _id, ...cambios } = datos;
+    const { _id, ...cambios } = datos
 
     // hacer llamado a base de datos con el filtro de tipo
-    const UsuarioCreado = updateUsuarioMongo(_id, cambios);
+    const UsuarioCreado = updateUsuarioMongo(_id, cambios)
 
-    return UsuarioCreado;
+    return UsuarioCreado
 }
 
 function deleteUsuario(id) {
 
     // hacer llamado a base de datos con el filtro de tipo
-    const UsuarioCreado = deleteUsuarioMongo(id);
+    const UsuarioCreado = deleteUsuarioMongo(id)
 
-    return UsuarioCreado;
+    return UsuarioCreado
 }
 
 module.exports = {

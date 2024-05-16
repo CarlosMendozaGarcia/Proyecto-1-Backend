@@ -10,8 +10,8 @@ const schemaPedido = new mongoose.Schema({
   }, {
     versionKey: false,
     timestamps: true
-});
+})
   
-const Model = mongoose.model('Pedido', schemaPedido);
+const Model = mongoose.model('Pedido', schemaPedido)
 
-module.exports = Model;
+module.exports = Model

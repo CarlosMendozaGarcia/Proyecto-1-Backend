@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const schemaUsuario = new mongoose.Schema({
     nombre:{type: String, required:true},
@@ -8,6 +8,6 @@ const schemaUsuario = new mongoose.Schema({
   }, {
     versionKey: false,
     timestamps: true
-});
+})
   
-const Model = mongoose.model('Usuario', schemaUsuario);
+const Model = mongoose.model('Usuario', schemaUsuario)
